@@ -4,21 +4,23 @@
 #include <cctype>
 using namespace std;
 
-int evaluatePostfix(string exp){}
+int evaluatePostfix(string exp) {
     stack<int> st;
 
     for (char ch : exp) {
         if (ch == ' ')
             continue;
 
-}// If operand
+        // If operand
         if (isdigit(ch)) {
             st.push(ch - '0');
         }
+
         // If operator
         else {
             int val2 = st.top();
             st.pop();
+
             int val1 = st.top();
             st.pop();
 
@@ -26,19 +28,23 @@ int evaluatePostfix(string exp){}
                 case '+':
                     st.push(val1 + val2);
                     break;
+
                 case '-':
                     st.push(val1 - val2);
                     break;
+
                 case '*':
                     st.push(val1 * val2);
                     break;
+
                 case '/':
                     st.push(val1 / val2);
                     break;
+
                 case '%':
                     st.push(val1 % val2);
                     break;
-            
+            }
         }
     }
 
